@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { Link, Navigate } from "react-router-dom";
 import {
   FormContainer,
   Title,
@@ -7,26 +9,45 @@ import {
   Input,
   SignInButton,
 } from "../components/StyledComponents/Login.styled";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import UploadImg from "../assets/uploadImage.svg";
 
 const Login = () => {
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
+  // With this snippet, authenticated is set to true if the user is authenticated. Otherwise, it is set to false.
+  const [authenticated, setAuthenticated] = useState(false);
 
-  // this function will be called when the user selects an image
+  // With this snippet, we check if the user is authenticated when the component is mounted.
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("authenticated");
+    if (isAuthenticated) {
+      setAuthenticated(true);
+    }
+  }, []);
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     setImage(file);
+    localStorage.setItem("userImage", URL.createObjectURL(file));
   };
 
-  // this function will be called when the user types in the name input
   const handleNameChange = (e) => {
-    setName(e.target.value);
+    const value = e.target.value;
+    setName(value);
+    localStorage.setItem("name", value);
   };
 
-  // this variable is used to determine whether the user can sign in or not
+  const handleSignIn = () => {
+    localStorage.setItem("authenticated", true);
+    setAuthenticated(true);
+  };
+
+  // Here I Check if the user is authenticated, if yes, redirect to /todolist else, show the login page.
+  if (authenticated) {
+    return <Navigate to="/todolist" />;
+  }
+
+  // Here I check if the user has uploaded an image and entered a name with more than 3 characters. If yes, the Sign In button is enabled.
   const canSignIn = image && name.length > 3;
 
   return (
@@ -34,7 +55,6 @@ const Login = () => {
       <Title>Get started</Title>
       <PhotoText>Add a photo</PhotoText>
       <Circle>
-        {/* this is the image preview section that will be shown to the user when they select an image file from their device  */}
         {image ? (
           <img src={URL.createObjectURL(image)} alt="uploadedImg" />
         ) : (
@@ -43,7 +63,6 @@ const Login = () => {
           </label>
         )}
 
-        {/* this input is hidden, but it will be triggered when the user clicks on the image preview section */}
         <input
           type="file"
           id="imageInput"
@@ -59,10 +78,8 @@ const Login = () => {
         value={name}
         onChange={handleNameChange}
       />
-      {/* // In Here i'm checking if the user can sign in or not. If the user can
-      sign in, the button will be enabled, otherwise it will be disabled. */}
       {canSignIn ? (
-        <Link className="Sign" to="/todolist">
+        <Link className="Sign" to="/todolist" onClick={handleSignIn}>
           <SignInButton>Sign In</SignInButton>
         </Link>
       ) : (
