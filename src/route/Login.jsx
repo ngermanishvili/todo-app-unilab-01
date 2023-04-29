@@ -20,16 +20,22 @@ const Login = () => {
   // With this snippet, we check if the user is authenticated when the component is mounted.
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("authenticated");
+    const savedImage = localStorage.getItem("image");
     if (isAuthenticated) {
       setAuthenticated(true);
     }
+    if (savedImage) {
+      setImage(savedImage);
+    }
   }, []);
+  
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     setImage(file);
-    localStorage.setItem("userImage", URL.createObjectURL(file));
+    localStorage.setItem("image", URL.createObjectURL(file)); // update key to "image"
   };
+  
 
   const handleNameChange = (e) => {
     const value = e.target.value;
