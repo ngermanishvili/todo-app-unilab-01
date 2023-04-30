@@ -1,4 +1,12 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
+
   margin: 0;
   padding: 0;
   border: 0;
@@ -6,7 +14,11 @@
   font: inherit;
   vertical-align: baseline;
   list-style: none;
+  font-family: 'Poppins', sans-serif;
 }
+
+
+
 
 a {
   text-decoration: none;
@@ -14,6 +26,7 @@ a {
 
 body {
   background-color: #000;
+  
 }
 
 
@@ -27,6 +40,3 @@ h1 {
 .complete {
   text-decoration: line-through;
 }
-
-
-
