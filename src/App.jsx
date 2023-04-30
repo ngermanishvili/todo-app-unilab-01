@@ -12,16 +12,11 @@ const App = () => {
 
   return (
     <BrowserRouter>
-    
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        {isAuthenticated ? (
-          <Route path="/todolist" element={<TodoList />} />
-        ) : (
-          <Navigate to="/login" />
-        )}
+        <Route path="/todolist" element={<TodoList />} />
       </Routes>
     </BrowserRouter>
   );
