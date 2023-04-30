@@ -4,7 +4,7 @@ import {
   StyledButton,
   StyledTodoList,
   StyledTodoRow,
-} from "./StyledComponents/TodoForm";
+} from "./StyledComponents/TodoForm/TodoForm";
 import React, { useState } from "react";
 
 const TodoForm = ({ handleAddTodo }) => {
