@@ -6,8 +6,7 @@ export const FormContainer = styled.div`
   align-items: center;
   max-width: 588px;
   width: 100%;
-  height: 688px;
-  margin: 40px auto;
+  margin: 80px auto;
   background-color: white;
   overflow: hidden;
   @media (max-width: 414px) {
@@ -33,18 +32,23 @@ export const SignInButton = styled.button`
     color: ${(props) => (props.disabled ? "#000000" : "#ffffff")};
   }
   border-radius: 4px;
+  margin-top: 76px;
+  margin-bottom: 73px;
 `;
 
 export const Title = styled.h1`
   margin-top: 30px;
-  font-size: 36px;
+  font-size: 48px;
   font-weight: bold;
+  font-family: "Poppins" sans-serif;
+  font-weight: 600;
 `;
 
 export const PhotoText = styled.p`
   margin-top: 44px;
   font-size: 20px;
   cursor: pointer;
+  font-weight: 300;
 `;
 
 export const Circle = styled.button`
@@ -77,6 +81,8 @@ export const NameText = styled.p`
   font-size: 20px;
   text-transform: lowercase;
   letter-spacing: 0px;
+  font-family: "Poppins" sans-serif;
+  font-weight: 300;
 `;
 
 export const Input = styled.input`

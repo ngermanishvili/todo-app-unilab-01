@@ -11,6 +11,8 @@ export const Wrapper = styled.div`
     text-align: center;
     color: #fff;
     font-size: 54px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
   }
 
   .btn {
@@ -43,6 +45,8 @@ export const Wrapper = styled.div`
     font-size: 48px;
     height: 100%;
     list-style: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
   }
 `;
 

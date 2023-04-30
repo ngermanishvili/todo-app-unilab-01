@@ -5,6 +5,8 @@ export const StyledForm = styled.form`
   justify-content: center;
   align-items: center;
   width: 100%;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 51px;
 `;
 
 export const StyledInput = styled.input`
@@ -15,7 +17,6 @@ export const StyledInput = styled.input`
   width: 100%;
   border-radius: 4px;
   text-indent: 24px;
-
 `;
 
 export const StyledButton = styled.button`
@@ -27,6 +28,10 @@ export const StyledButton = styled.button`
   border-color: white;
   background-color: #5efc8d;
   border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  font-size: 32px;
+  font-weight: 300;
 `;
 
 export const StyledTodoList = styled.div`

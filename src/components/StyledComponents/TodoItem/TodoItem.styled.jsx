@@ -13,6 +13,8 @@ export const TodoRow = styled.div`
   height: 54px;
   width: 100%;
   opacity: ${(props) => (props.completed ? "0.1" : "1")};
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
 `;
 
 export const TodoText = styled.div`
