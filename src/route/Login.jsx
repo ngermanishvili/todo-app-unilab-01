@@ -8,72 +8,68 @@ import {
   NameText,
   Input,
   SignInButton,
-} from "../components/StyledComponents/Login.styled";
+} from "../components/StyledComponents/Login/Login.styled";
 import UploadImg from "../assets/uploadImage.svg";
 
+const initialValue = {
+  photo: "",
+  name: "",
+};
+
+export const getSessionStorage = () => {
+  let storedValues = sessionStorage.getItem("displayUser");
+  return storedValues ? JSON.parse(storedValues) : initialValue;
+};
+
 const Login = () => {
-  const [image, setImage] = useState(null);
-  const [name, setName] = useState("");
-  // With this snippet, authenticated is set to true if the user is authenticated. Otherwise, it is set to false.
-  const [authenticated, setAuthenticated] = useState(false);
+  const [displayUser, setdisplayUser] = useState(getSessionStorage());
 
-  // With this snippet, we check if the user is authenticated when the component is mounted.
-  useEffect(() => {
-    const isAuthenticated = localStorage.getItem("authenticated");
-    const savedImage = localStorage.getItem("image");
-    if (isAuthenticated) {
-      setAuthenticated(true);
-    }
-    if (savedImage) {
-      setImage(savedImage);
-    }
-  }, []);
-  
-
-  const handleImageUpload = (e) => {
+  const uploadPhoto = (e) => {
     const file = e.target.files[0];
-    setImage(file);
-    localStorage.setItem("image", URL.createObjectURL(file)); // update key to "image"
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const base64String = reader.result;
+      setdisplayUser({ ...displayUser, photo: base64String });
+    };
   };
-  
+
+
+  useEffect(() => {
+    localStorage.setItem("displayUser", JSON.stringify(displayUser));
+  }, [displayUser]);
 
   const handleNameChange = (e) => {
-    const value = e.target.value;
-    setName(value);
-    localStorage.setItem("name", value);
+    const { name, value } = e.target;
+    setdisplayUser({ ...displayUser, [name]: value });
   };
 
   const handleSignIn = () => {
     localStorage.setItem("authenticated", true);
+    localStorage.setItem("displayUser", JSON.stringify(displayUser));
     setAuthenticated(true);
   };
 
-  // Here I Check if the user is authenticated, if yes, redirect to /todolist else, show the login page.
-  if (authenticated) {
-    return <Navigate to="/todolist" />;
-  }
-
   // Here I check if the user has uploaded an image and entered a name with more than 3 characters. If yes, the Sign In button is enabled.
-  const canSignIn = image && name.length > 3;
+  const canSignIn = displayUser.photo && displayUser.name.length > 3;
 
   return (
     <FormContainer>
       <Title>Get started</Title>
       <PhotoText>Add a photo</PhotoText>
       <Circle>
-        {image ? (
-          <img src={URL.createObjectURL(image)} alt="uploadedImg" />
+        {displayUser.photo ? (
+          <img src={displayUser.photo} alt="uploadedImg" />
         ) : (
           <label htmlFor="imageInput">
             <img src={UploadImg} alt="uploadImg" />
           </label>
         )}
-
         <input
           type="file"
           id="imageInput"
           accept="image/*"
-          onChange={handleImageUpload}
+          onChange={uploadPhoto}
           style={{ display: "none" }}
         />
       </Circle>
@@ -81,7 +77,8 @@ const Login = () => {
       <Input
         type="text"
         placeholder="Your name"
-        value={name}
+        name="name"
+        value={displayUser.name}
         onChange={handleNameChange}
       />
       {canSignIn ? (
@@ -91,7 +88,7 @@ const Login = () => {
       ) : (
         <SignInButton disabled>Sign In</SignInButton>
       )}
-      {name.length > 0 && name.length <= 3 && (
+      {displayUser.name.length > 0 && displayUser.name.length <= 3 && (
         <p style={{ color: "red", margin: "8px 0" }}>
           Name must be more than 3 characters
         </p>
