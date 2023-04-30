@@ -5,8 +5,10 @@ import {
   TodoRow,
   TodoText,
   SvgContainer,
-} from "./StyledComponents/TodoItem.styled";
+} from "./StyledComponents/TodoItem/TodoItem.styled";
 
+
+// this todo and remove todo is comign from the todolist.jsx 
 const TodoItem = ({ todo, removeTodo }) => {
   const [completed, setCompleted] = useState(false);
 
@@ -14,7 +16,7 @@ const TodoItem = ({ todo, removeTodo }) => {
     setCompleted(true);
   };
 
-  return (
+  return (  
     <TodoRow completed={completed}>
       <TodoText completed={completed}>{todo.text}</TodoText>
       <SvgContainer>
