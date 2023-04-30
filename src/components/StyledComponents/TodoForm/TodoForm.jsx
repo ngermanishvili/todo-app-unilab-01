@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const StyledForm = styled.form`
   display: flex;
   justify-content: center;
@@ -14,10 +13,9 @@ export const StyledInput = styled.input`
   max-width: 487px;
   height: 76px;
   width: 100%;
-  padding-left: 10px;
-  &::placeholder {
-    padding-left: 24px;
-  }
+  border-radius: 4px;
+  text-indent: 24px;
+
 `;
 
 export const StyledButton = styled.button`
@@ -28,6 +26,7 @@ export const StyledButton = styled.button`
   padding: 1px;
   border-color: white;
   background-color: #5efc8d;
+  border-radius: 4px;
 `;
 
 export const StyledTodoList = styled.div`
@@ -41,11 +40,6 @@ export const StyledTodoRow = styled.div`
   align-items: center;
   margin: 4px auto;
   color: white;
-  background: linear-gradient(
-    90deg,
-    rgba(20, 159, 255, 1) 0%,
-    rgba(17, 122, 255, 1) 100%
-  );
   padding: 16px;
   border-radius: 5px;
   width: 90%;

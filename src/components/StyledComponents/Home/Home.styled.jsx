@@ -1,5 +1,4 @@
-
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -20,6 +19,11 @@ export const Wrapper = styled.div`
     max-width: 388px;
     width: 100%;
     height: 98px;
+    border-radius: 4px;
+  }
+
+  .btn:hover {
+    background-color: #fff;
   }
 
   @media only screen and (max-width: 480px) {
@@ -42,7 +46,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const  LogoImg = styled.img`
+export const LogoImg = styled.img`
   max-width: 100%;
   height: auto;
   margin-top: 74px;
