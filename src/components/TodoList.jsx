@@ -75,6 +75,17 @@ const TodoContainer = styled.div`
   min-height: 100vh;
   height: 100%;
   background-color: #fff;
+  
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin-top: 35px;
+    margin-bottom: 27px;
+  }
 `;
 
 export default TodoList;
