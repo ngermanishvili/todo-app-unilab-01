@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   FormContainer,
   Title,
@@ -16,6 +16,7 @@ const initialValue = {
   name: "",
 };
 
+// Here I'm using sessionStorage to store the user's name and photo. If the user refreshes the page, the data is not lost. If the user closes the browser, the data is lost.
 export const getSessionStorage = () => {
   let storedValues = sessionStorage.getItem("displayUser");
   return storedValues ? JSON.parse(storedValues) : initialValue;
@@ -23,7 +24,7 @@ export const getSessionStorage = () => {
 
 const Login = () => {
   const [displayUser, setdisplayUser] = useState(getSessionStorage());
-
+  // Here I'm using localStorage to store the user's name and photo. If the user refreshes the page, the data is not lost. If the user closes the browser, the data is not lost.
   const uploadPhoto = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -34,16 +35,17 @@ const Login = () => {
     };
   };
 
-
   useEffect(() => {
     localStorage.setItem("displayUser", JSON.stringify(displayUser));
   }, [displayUser]);
 
+  // this function is used to handle the name input. When the user types in the input, the value is stored in the displayUser state.
   const handleNameChange = (e) => {
     const { name, value } = e.target;
     setdisplayUser({ ...displayUser, [name]: value });
   };
 
+  // this function is used to handle the Sign In button. When the user clicks on the button, the user is redirected to the TodoList page.
   const handleSignIn = () => {
     localStorage.setItem("authenticated", true);
     localStorage.setItem("displayUser", JSON.stringify(displayUser));
@@ -74,6 +76,7 @@ const Login = () => {
         />
       </Circle>
       <NameText>Fill your name</NameText>
+
       <Input
         type="text"
         placeholder="Your name"
@@ -81,17 +84,15 @@ const Login = () => {
         value={displayUser.name}
         onChange={handleNameChange}
       />
+      {displayUser.name.length > 0 && displayUser.name.length <= 3 && (
+        <p style={{ color: "red" }}>Name must be more than 3 characters</p>
+      )}
       {canSignIn ? (
         <Link className="Sign" to="/todolist" onClick={handleSignIn}>
           <SignInButton>Sign In</SignInButton>
         </Link>
       ) : (
         <SignInButton disabled>Sign In</SignInButton>
-      )}
-      {displayUser.name.length > 0 && displayUser.name.length <= 3 && (
-        <p style={{ color: "red", margin: "8px 0" }}>
-          Name must be more than 3 characters
-        </p>
       )}
     </FormContainer>
   );
