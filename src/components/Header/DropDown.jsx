@@ -4,6 +4,7 @@ import styles from "./dropdown.module.css";
 const DropdownMenu = () => {
   const handleLogout = () => {
     localStorage.removeItem("displayUser");
+    localStorage.removeItem("authenticated");
     window.location.href = "/";
   };
 
