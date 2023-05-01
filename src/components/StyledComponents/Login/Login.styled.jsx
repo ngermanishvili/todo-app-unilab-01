@@ -5,12 +5,29 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   max-width: 588px;
+  height: 688px;
   width: 100%;
-  margin: 80px auto;
+  margin: 50px auto;
   background-color: white;
   overflow: hidden;
-  @media (max-width: 414px) {
+
+  @media (max-width: 1024px) {
+    display: flex;
+    width: 600px;
+    height: 600px;
+    max-width: 588px;
+    background-color: white;
+  }
+
+  @media (max-width: 800px) {
     width: 90%;
+    margin: 30px auto;
+    height: 800px;
+  }
+  @media (max-width: 375px) {
+    width: 90%;
+    margin: 50px auto;
+    height: 700px;
   }
 `;
 
@@ -51,7 +68,7 @@ export const PhotoText = styled.p`
   font-weight: 300;
 `;
 
-export const Circle = styled.button`
+export const Circle = styled.div`
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -62,6 +79,10 @@ export const Circle = styled.button`
   overflow: hidden;
   cursor: pointer;
   margin-top: 10px;
+
+  @media (max-width: 1024px) {
+    background-color: white;
+  }
 
   &:hover {
     background-color: #5efc8d;

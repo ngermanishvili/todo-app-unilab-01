@@ -7,6 +7,12 @@ export const StyledForm = styled.form`
   width: 100%;
   font-family: "Poppins", sans-serif;
   margin-bottom: 51px;
+
+  @media (max-width: 800px) {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+  }
 `;
 
 export const StyledInput = styled.input`

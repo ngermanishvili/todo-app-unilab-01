@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
 
   h1 {
     margin-top: 46px;
@@ -28,14 +29,6 @@ export const Wrapper = styled.div`
     background-color: #fff;
   }
 
-  @media only screen and (max-width: 480px) {
-    .btn {
-      width: 300px;
-      height: 50px;
-      margin-top: 150px;
-    }
-  }
-
   span {
     display: flex;
     justify-content: center;
@@ -48,6 +41,31 @@ export const Wrapper = styled.div`
     font-family: "Poppins", sans-serif;
     font-weight: 300;
   }
+
+  @media only screen and (max-width: 800px) {
+    h1 {
+      font-size: 36px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      margin-top: 200px;
+      height: 60px;
+      width: 200px;
+    }
+
+    span {
+      font-size: 36px;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .btn {
+      margin-top: 150px;
+      height: 60px;
+      width: 200px;
+    }
+  }
 `;
 
 export const LogoImg = styled.img`
@@ -57,4 +75,8 @@ export const LogoImg = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
+
+  @media only screen and (max-width: 800px) {
+    margin-top: 24px;
+  }
 `;
