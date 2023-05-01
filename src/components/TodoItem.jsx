@@ -12,6 +12,7 @@ import {
 const TodoItem = ({ todo, removeTodo }) => {
   const [completed, setCompleted] = useState(false);
 
+  // this function is used to change the state of the todo item to completed when the user clicks on the checkmark icon. 
   const handleCheckmarkClick = () => {
     setCompleted(true);
   };
