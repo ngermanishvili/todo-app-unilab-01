@@ -17,8 +17,6 @@ const Navbar = () => {
     setDropDown(!dropDown);
   };
 
- 
-
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>TO DO</div>
