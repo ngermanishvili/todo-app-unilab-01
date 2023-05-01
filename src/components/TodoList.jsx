@@ -7,11 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const TodoList = () => {
   const navigate = useNavigate();
-
-  // i used this useState for the local storage to save the todos.
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem("todos");
-    // If there are todos in the local storage, we will parse them into an array and return them. If there are no todos, we will return an empty array.
     if (savedTodos) {
       return JSON.parse(savedTodos);
     } else {
@@ -60,9 +57,7 @@ const TodoList = () => {
       <Navbar />
       <TodoContainer>
         <h1>Add Your Daily Tasks</h1>
-        {/* Render the TodoForm component and pass the handleAddTodo function as a prop. */}
         <TodoForm handleAddTodo={handleAddTodo} />
-        {/* Render each todo as a TodoItem component. */}
         {todos.map((todo) => (
           <TodoItem
             completeTodo={completeTodo}
