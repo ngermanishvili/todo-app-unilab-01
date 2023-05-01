@@ -3,8 +3,11 @@ import Navbar from "./Header/Navbar";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const TodoList = () => {
+  const navigate = useNavigate();
+
   // i used this useState for the local storage to save the todos.
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem("todos");
@@ -15,6 +18,13 @@ const TodoList = () => {
       return [];
     }
   });
+
+  useEffect(() => {
+    const authenticated = localStorage.getItem("authenticated");
+    if (!authenticated) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   //! This effect will run every time the todos array is updated.
   useEffect(() => {
@@ -72,10 +82,9 @@ const TodoContainer = styled.div`
   justify-content: start;
   text-align: center;
   width: 100%;
-  min-height: 100vh;
+  min-height: 84vh;
   height: 100%;
   background-color: #fff;
-  
 
   h1 {
     display: flex;
