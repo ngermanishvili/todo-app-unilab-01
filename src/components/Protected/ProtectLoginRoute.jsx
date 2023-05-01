@@ -8,7 +8,6 @@ const ProtectLoginRoute = () => {
     localStorage.getItem("authenticated")
   );
 
-  // 
   if (isAuthenticated) {
     return <Navigate to="/todolist" />;
   } else {
