@@ -9,9 +9,9 @@ import {
 
 const TodoItem = ({ todo, removeTodo }) => {
   const [completed, setCompleted] = useState(false);
-  
+
   const handleCheckmarkClick = () => {
-    setCompleted(true);
+    setCompleted(!completed);
   };
 
   return (
