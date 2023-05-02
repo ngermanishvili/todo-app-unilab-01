@@ -4,8 +4,8 @@ import styles from "./dropdown.module.css";
 // with using handleLogout function, I'm removing the user's name and photo from localStorage and redirecting the user to the Login page.
 const DropdownMenu = () => {
   const handleLogout = () => {
-    localStorage.removeItem("displayUser");
-    localStorage.removeItem("authenticated");
+    const keysToRemove = ["displayUser", "authenticated", "todos"];
+    keysToRemove.forEach((key) => localStorage.removeItem(key));
     window.location.href = "/";
   };
 
