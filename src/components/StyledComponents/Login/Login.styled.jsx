@@ -9,7 +9,6 @@ export const FormContainer = styled.div`
   width: 100%;
   margin: 50px auto;
   background-color: white;
-  overflow: hidden;
 
   @media (max-width: 1024px) {
     display: flex;
@@ -69,7 +68,7 @@ export const PhotoText = styled.p`
 `;
 
 export const Circle = styled.div`
-  width: 120px;
+  width: 100px;
   height: 120px;
   border-radius: 50%;
   background-color: #e1e1e1;
@@ -123,6 +122,4 @@ export const Input = styled.input`
     height: 40px;
     margin-top: 35px;
   }
-
-  /* Media query for mobile devices */
 `;
