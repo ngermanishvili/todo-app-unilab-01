@@ -23,6 +23,8 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 98px;
     border-radius: 4px;
+    font-size: 48px;
+    font-weight: 300;
   }
 
   .btn:hover {
