@@ -54,6 +54,7 @@ export const Wrapper = styled.div`
       margin-top: 200px;
       height: 60px;
       width: 200px;
+      font-size: 28px;
     }
 
     span {
