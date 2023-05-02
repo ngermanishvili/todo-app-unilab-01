@@ -37,9 +37,11 @@ export const SvgContainer = styled.div`
     margin-right: 30px;
     width: 24px;
     height: 17px;
+    padding: 18px 0;
   }
   & > img:last-child {
     width: 20px;
     height: 20px;
+    padding: 18px 0;
   }
 `;
