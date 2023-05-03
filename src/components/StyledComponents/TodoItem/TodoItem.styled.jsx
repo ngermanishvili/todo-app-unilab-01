@@ -27,21 +27,27 @@ export const TodoText = styled.div`
   padding-left: 24px;
   font-size: 22px;
 `;
-
 export const SvgContainer = styled.div`
   padding: 12px;
   display: flex;
   cursor: pointer;
   align-items: center;
   & > img:first-child {
-    margin-right: 30px;
-    width: 24px;
+    margin-right: 10px;
     height: 17px;
-    padding: 18px 0;
+    padding: 18px 12px;
+    :hover {
+      background-color: #5efc8d;
+      padding: 18px 12px;
+    }
   }
   & > img:last-child {
-    width: 20px;
-    height: 20px;
-    padding: 18px 0;
+    width: 24px;
+    height: 27px;
+    padding: 12px;
+    :hover {
+      background-color: #ff0000;
+      padding: 13px 12px;
+    }
   }
 `;
