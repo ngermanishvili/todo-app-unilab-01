@@ -38,6 +38,12 @@ export const StyledButton = styled.button`
   outline: none;
   font-size: 32px;
   font-weight: 300;
+
+  &:hover {
+    background-color: #000;
+    color: #fff;  
+  }
+
 `;
 
 export const StyledTodoList = styled.div`
